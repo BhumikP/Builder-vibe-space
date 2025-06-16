@@ -3,7 +3,6 @@ import FrameItTestimonialsSlider from "@/components/FrameItTestimonialsSlider";
 import FrameItFeatures from "@/components/FrameItFeatures";
 import FrameItShowcase from "@/components/FrameItShowcase";
 import FrameItWhatWeCover from "@/components/FrameItWhatWeCover";
-import FrameItInstallation from "@/components/FrameItInstallation";
 import FrameItFAQ from "@/components/FrameItFAQ";
 import FrameItFooter from "@/components/FrameItFooter";
 
@@ -15,7 +14,6 @@ export default function HomePage() {
       <FrameItFeatures />
       <FrameItShowcase />
       <FrameItWhatWeCover />
-      <FrameItInstallation />
       <FrameItFAQ />
       <FrameItFooter />
     </div>

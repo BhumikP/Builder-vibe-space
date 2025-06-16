@@ -50,7 +50,7 @@ const careInstructions = [
   {
     title: "Daily Care",
     description: "Dust gently with a soft, dry microfiber cloth",
-    icon: "��",
+    icon: "🧹",
   },
   {
     title: "Deep Cleaning",
@@ -88,7 +88,7 @@ const FrameItInstallation = () => {
           </div>
 
           {/* Installation Steps */}
-          <div className="mb-20">
+          <div id="installation" className="mb-20">
             <div className="text-center mb-12">
               <h3 className="text-2xl md:text-3xl font-bold text-charcoal-900 mb-4">
                 Easy Installation in 4 Steps
@@ -176,7 +176,7 @@ const FrameItInstallation = () => {
           </div>
 
           {/* Care Instructions */}
-          <div>
+          <div id="care">
             <div className="text-center mb-12">
               <h3 className="text-2xl md:text-3xl font-bold text-charcoal-900 mb-4">
                 Care & Maintenance
