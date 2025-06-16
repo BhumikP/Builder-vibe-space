@@ -690,6 +690,9 @@ video {
 .grid {
   display: grid;
 }
+.hidden {
+  display: none;
+}
 .aspect-\[4\/3\] {
   aspect-ratio: 4/3;
 }
@@ -1941,6 +1944,10 @@ video {
 
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .md\:flex {
+    display: flex;
   }
 
   .md\:w-1\/3 {
