@@ -2,7 +2,7 @@ import {
   Users,
   Camera,
   Heart,
-  Rings,
+  Crown,
   Instagram,
   Palette,
   Sparkles,
@@ -25,7 +25,7 @@ const coverItems = [
     description: "Celebrate your furry friends",
   },
   {
-    icon: Rings,
+    icon: Crown,
     title: "Wedding Pictures",
     description: "Preserve your special day",
   },
