@@ -62,6 +62,33 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // FrameIt brand colors
+        cream: {
+          50: "#FDFBF7",
+          100: "#F5F1EA",
+          200: "#E8DDD4",
+          300: "#D4C5B9",
+          400: "#C2B3A7",
+          500: "#B1A195",
+        },
+        wood: {
+          100: "#F0E6D2",
+          200: "#E1CDA5",
+          300: "#D2B477",
+          400: "#C39B4A",
+          500: "#B8956A",
+          600: "#A0815C",
+        },
+        gold: {
+          400: "#E6C275",
+          500: "#D4A574",
+          600: "#B8956A",
+          700: "#9C7F56",
+        },
+        charcoal: {
+          800: "#2C2C2C",
+          900: "#1A1A1A",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
