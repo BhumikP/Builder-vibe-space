@@ -34,6 +34,7 @@ const FrameItHero = () => {
                 <Button
                   size="lg"
                   className="bg-gold-500 hover:bg-gold-600 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() => (window.location.href = "/contact")}
                 >
                   Start Framing
                 </Button>
@@ -41,6 +42,11 @@ const FrameItHero = () => {
                   variant="outline"
                   size="lg"
                   className="border-2 border-charcoal-800 text-charcoal-800 hover:bg-charcoal-800 hover:text-cream-50 font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                  onClick={() =>
+                    document
+                      .querySelector("#showcase")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                 >
                   See Our Work
                 </Button>
