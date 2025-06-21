@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const testimonials = [
     rating: 5,
     text: "Absolutely stunning quality! The frame perfectly complements our living room, and the photo looks like a piece of art. The whole process was seamless from upload to delivery.",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face&q=80",
     photoType: "Family Portrait",
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
     rating: 5,
     text: "I was skeptical about ordering frames online, but FrameIt exceeded all expectations. The craftsmanship is incredible, and my travel photos have never looked better.",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&q=80",
     photoType: "Travel Photos",
   },
   {
@@ -33,7 +33,7 @@ const testimonials = [
     rating: 5,
     text: "The customer service was outstanding! They helped me choose the perfect frame for my wedding photos. Now our hallway looks like a professional gallery.",
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&q=80",
     photoType: "Wedding Photos",
   },
   {
@@ -43,7 +43,7 @@ const testimonials = [
     rating: 5,
     text: "Fast shipping, perfect packaging, and the frame quality is top-notch. I've already ordered three more frames for different rooms. Highly recommend!",
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face&q=80",
     photoType: "Art Prints",
   },
   {
@@ -53,7 +53,7 @@ const testimonials = [
     rating: 5,
     text: "The preview feature is amazing - I could see exactly how my photo would look before ordering. The final product was even better than expected!",
     image:
-      "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&h=100&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&h=100&fit=crop&crop=face&q=80",
     photoType: "Pet Photos",
   },
 ];
@@ -61,17 +61,38 @@ const testimonials = [
 const FrameItTestimonialsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  // Auto-advance slides
+  // Intersection Observer for performance
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-advance slides only when visible
+  useEffect(() => {
+    if (!isAutoPlaying || !isVisible) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, isVisible]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -91,12 +112,12 @@ const FrameItTestimonialsSlider = () => {
   };
 
   return (
-    <section className="py-20 bg-dark-green text-white overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-dark-green text-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               What Our Customers Say
             </h2>
             <p className="text-lg text-white max-w-2xl mx-auto">
@@ -112,7 +133,7 @@ const FrameItTestimonialsSlider = () => {
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {testimonials.map((testimonial) => (
+                {testimonials.map((testimonial, index) => (
                   <div key={testimonial.id} className="w-full flex-shrink-0">
                     <div className="bg-white rounded-2xl p-8 md:p-12 mx-4 shadow-lg">
                       <div className="max-w-4xl mx-auto">
@@ -124,11 +145,12 @@ const FrameItTestimonialsSlider = () => {
                                 <Star
                                   key={i}
                                   className="w-5 h-5 fill-primary"
+                                  aria-hidden="true"
                                 />
                               ))}
                             </div>
 
-                            <Quote className="w-8 h-8 text-primary mb-4" />
+                            <Quote className="w-8 h-8 text-primary mb-4" aria-hidden="true" />
 
                             <blockquote className="text-lg md:text-xl text-charcoal-800 leading-relaxed mb-6">
                               &ldquo;{testimonial.text}&rdquo;
@@ -141,6 +163,9 @@ const FrameItTestimonialsSlider = () => {
                                   alt={testimonial.name}
                                   fill
                                   className="object-cover"
+                                  sizes="48px"
+                                  loading={index === 0 ? "eager" : "lazy"}
+                                  quality={80}
                                 />
                               </div>
                               <div>
@@ -162,6 +187,7 @@ const FrameItTestimonialsSlider = () => {
                                   className="w-8 h-8 text-white"
                                   fill="currentColor"
                                   viewBox="0 0 20 20"
+                                  aria-hidden="true"
                                 >
                                   <path
                                     fillRule="evenodd"
@@ -189,6 +215,7 @@ const FrameItTestimonialsSlider = () => {
               size="icon"
               onClick={prevSlide}
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-10"
+              aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -198,52 +225,26 @@ const FrameItTestimonialsSlider = () => {
               size="icon"
               onClick={nextSlide}
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-10"
+              aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-8">
+          {/* Dots Navigation */}
+          <div className="flex justify-center mt-8 space-x-2">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-gowilds-primary-dark scale-125"
-                    : "bg-gowilds-primary hover:bg-gowilds-primary-dark/40"
+                    ? "bg-white scale-125"
+                    : "bg-white/40 hover:bg-white/60"
                 }`}
+                aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
-          </div>
-
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold  mb-2">
-                500+
-              </div>
-              <div className="">Happy Customers</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold  mb-2">
-                4.9/5
-              </div>
-              <div className="">Average Rating</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold  mb-2">
-                1000+
-              </div>
-              <div className="">Frames Created</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold  mb-2">
-                98%
-              </div>
-              <div className="">Would Recommend</div>
-            </div>
           </div>
         </div>
       </div>

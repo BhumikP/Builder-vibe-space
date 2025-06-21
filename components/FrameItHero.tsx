@@ -1,20 +1,27 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import FrameItChat from "./FrameItChat";
-import { useState } from "react";
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+
+// Lazy load the chat component since it's not critical for initial render
+const FrameItChat = dynamic(() => import("./FrameItChat"), {
+  ssr: false,
+  loading: () => null
+});
 
 const FrameItHero = () => {
   const [showChat, setShowChat] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-dark-green text-white overflow-hidden">
-      {/* Background decorative elements */}
-      <div
-        className={
-          'absolute inset-0 bg-[url(\'data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23F5F1EA" fill-opacity="0.4"%3E%3Ccircle cx="30" cy="30" r="1.5"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')] opacity-30'
-        }
-      ></div>
+      {/* Optimized background pattern using CSS instead of inline SVG */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F1EA' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -27,7 +34,7 @@ const FrameItHero = () => {
                   <span className="text-primary block">Memories</span>
                   Into Stunning Wall Art
                 </h1>
-                <p className="text-lg md:text-xl  max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-lg md:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed">
                   Upload your favorite photos and get them delivered as
                   beautifully framed art. Premium quality, handcrafted frames
                   that turn your memories into masterpieces.
@@ -37,7 +44,7 @@ const FrameItHero = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button
                   size="lg"
-                  className=" text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   onClick={() => (window.location.href = "/contact")}
                 >
                   Start Framing
@@ -69,7 +76,7 @@ const FrameItHero = () => {
                       </div>
                     ))}
                   </div>
-                  <span className="text-sm  font-medium">
+                  <span className="text-sm font-medium">
                     500+ Happy Customers
                   </span>
                 </div>
@@ -89,6 +96,7 @@ const FrameItHero = () => {
                             className="w-8 h-8 text-slate-200"
                             fill="currentColor"
                             viewBox="0 0 20 20"
+                            aria-hidden="true"
                           >
                             <path
                               fillRule="evenodd"
@@ -110,6 +118,7 @@ const FrameItHero = () => {
                       className="w-6 h-6 text-slate-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      aria-hidden="true"
                     >
                       <path
                         fillRule="evenodd"
@@ -126,6 +135,7 @@ const FrameItHero = () => {
                       className="w-6 h-6 text-slate-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      aria-hidden="true"
                     >
                       <path
                         fillRule="evenodd"
@@ -139,31 +149,32 @@ const FrameItHero = () => {
             </div>
           </div>
         </div>
+        
+        {/* Chat button */}
         <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setShowChat(true)}
-                className="relative flex ml-auto right-3 bottom-0"
-              >
-                <svg
-                  className="h-10 w-10"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
-                <span className="sr-only">Open chat</span>
-                {/* Chat notification dot */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse" />
-              </Button>
+          variant="ghost"
+          size="icon"
+          onClick={() => setShowChat(true)}
+          className="relative flex ml-auto right-3 bottom-0"
+        >
+          <svg
+            className="h-10 w-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+            />
+          </svg>
+          <span className="sr-only">Open chat</span>
+          {/* Chat notification dot */}
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse" />
+        </Button>
       </div>
-     
 
       {/* Bottom wave separator */}
       <div className="absolute bottom-0 left-0 right-0">
@@ -171,13 +182,13 @@ const FrameItHero = () => {
           className="w-full h-20 text-green-800/30"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
+          aria-hidden="true"
         >
           <path d="M1200 120L0 16.48V120z" fill="currentColor"></path>
         </svg>
       </div>
       
       {showChat && <FrameItChat onClose={() => setShowChat(false)} />}
-
     </section>
   );
 };

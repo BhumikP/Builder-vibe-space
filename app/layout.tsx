@@ -5,7 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://frameit.com"),
@@ -18,6 +23,9 @@ export const metadata: Metadata = {
     "custom frames",
     "photo printing",
     "home decor",
+    "picture frames",
+    "photo gifts",
+    "wall decoration",
   ],
   authors: [{ name: "FrameIt" }],
   creator: "FrameIt",
@@ -57,6 +65,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: "https://frameit.com",
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
 };
 
 export default function RootLayout({
@@ -66,7 +80,38 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <meta name="theme-color" content="#166534" />
+        <meta name="color-scheme" content="light dark" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "FrameIt",
+              "url": "https://frameit.com",
+              "logo": "https://frameit.com/logo.png",
+              "description": "Transform your memories into stunning wall art with premium quality, handcrafted frames.",
+              "sameAs": [
+                "https://facebook.com/frameit",
+                "https://instagram.com/frameit",
+                "https://twitter.com/frameit"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-555-FRAMEIT",
+                "contactType": "customer service"
+              }
+            })
+          }}
+        />
+      </head>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <TooltipProvider>
           {children}
           <Toaster />

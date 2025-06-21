@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -9,56 +9,56 @@ const galleryPhotos = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1541963463532-d68292c34d19?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1541963463532-d68292c34d19?w=400&h=500&fit=crop&q=80",
     frameColor: "Natural Wood",
     alt: "Beautiful landscape in natural wood frame",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&h=500&fit=crop&q=80",
     frameColor: "Autumn Leaves",
     alt: "Autumn leaves in warm wood frame",
   },
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop&q=80",
     frameColor: "Portrait Frame",
     alt: "Portrait in elegant wood frame",
   },
   {
     id: 4,
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop&q=80",
     frameColor: "Mountain View",
     alt: "Mountain landscape in premium frame",
   },
   {
     id: 5,
     image:
-      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=500&fit=crop&q=80",
     frameColor: "Pet Portrait",
     alt: "Cute pet portrait in custom frame",
   },
   {
     id: 6,
     image:
-      "https://images.unsplash.com/photo-1502780402662-acc01917174e?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1502780402662-acc01917174e?w=400&h=500&fit=crop&q=80",
     frameColor: "Beach Memories",
     alt: "Beach scene in coastal frame",
   },
   {
     id: 7,
     image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=500&fit=crop&q=80",
     frameColor: "City Lights",
     alt: "City skyline in modern frame",
   },
   {
     id: 8,
     image:
-      "https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?w=400&h=500&fit=crop&q=80",
     frameColor: "Forest Frame",
     alt: "Forest path in rustic frame",
   },
@@ -68,6 +68,27 @@ const FrameItPhotoGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [slidesToShow, setSlidesToShow] = useState(5);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Intersection Observer for performance
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Responsive slides calculation
   useEffect(() => {
@@ -86,13 +107,14 @@ const FrameItPhotoGallery = () => {
     };
 
     updateSlidesToShow();
-    window.addEventListener("resize", updateSlidesToShow);
-    return () => window.removeEventListener("resize", updateSlidesToShow);
+    const handleResize = () => updateSlidesToShow();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-advance slides
+  // Auto-advance slides only when visible
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || !isVisible) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
@@ -102,7 +124,7 @@ const FrameItPhotoGallery = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slidesToShow]);
+  }, [isAutoPlaying, slidesToShow, isVisible]);
 
   const nextSlide = () => {
     const maxIndex = galleryPhotos.length - slidesToShow;
@@ -133,7 +155,7 @@ const FrameItPhotoGallery = () => {
   const maxDots = Math.ceil(galleryPhotos.length - slidesToShow + 1);
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -150,7 +172,7 @@ const FrameItPhotoGallery = () => {
 
           {/* Photo Gallery Slider */}
           <div className="relative">
-            <div className=" rounded-2xl">
+            <div className="rounded-2xl">
               <div
                 className="flex transition-transform duration-700 ease-in-out gap-6"
                 style={{
@@ -178,6 +200,9 @@ const FrameItPhotoGallery = () => {
                               fill
                               className="object-cover transition-transform duration-700 group-hover:scale-110"
                               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                              priority={index < 3} // Priority load first 3 images
+                              loading={index < 3 ? "eager" : "lazy"}
+                              quality={80}
                             />
 
                             {/* Hover Overlay */}
@@ -217,6 +242,7 @@ const FrameItPhotoGallery = () => {
               size="icon"
               onClick={prevSlide}
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-10"
+              aria-label="Previous photo"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -226,22 +252,24 @@ const FrameItPhotoGallery = () => {
               size="icon"
               onClick={nextSlide}
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-10"
+              aria-label="Next photo"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: maxDots }).map((_, index) => (
+          {/* Dots Navigation */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {[...Array(maxDots)].map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-gold-500 scale-125"
-                    : "bg-charcoal-800/20 hover:bg-charcoal-800/40"
+                    ? "bg-primary scale-125"
+                    : "bg-gray-300 hover:bg-gray-400"
                 }`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
