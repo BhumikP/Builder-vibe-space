@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Lazy load the chat component since it's not critical for initial render
 const FrameItChat = dynamic(() => import("./FrameItChat"), {
@@ -12,6 +12,12 @@ const FrameItChat = dynamic(() => import("./FrameItChat"), {
 
 const FrameItHero = () => {
   const [showChat, setShowChat] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration mismatch by ensuring component is mounted
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-dark-green text-white overflow-hidden">
@@ -45,7 +51,11 @@ const FrameItHero = () => {
                 <Button
                   size="lg"
                   className="text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => (window.location.href = "/contact")}
+                  onClick={() => {
+                    if (isMounted && typeof window !== 'undefined') {
+                      window.location.href = "/contact";
+                    }
+                  }}
                 >
                   Start Framing
                 </Button>
@@ -53,11 +63,12 @@ const FrameItHero = () => {
                   variant="outline"
                   size="lg"
                   className="border-2 border-green-800 text-black hover:bg-green-800 hover:text-cream-50 font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300"
-                  onClick={() =>
-                    document
-                      .querySelector("#showcase")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
+                  onClick={() => {
+                    if (isMounted && typeof window !== 'undefined') {
+                      const element = document.querySelector("#showcase");
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                 >
                   See Our Work
                 </Button>

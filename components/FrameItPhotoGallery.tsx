@@ -69,10 +69,18 @@ const FrameItPhotoGallery = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [slidesToShow, setSlidesToShow] = useState(5);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Prevent hydration mismatch by ensuring component is mounted
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Intersection Observer for performance
   useEffect(() => {
+    if (!isMounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -88,11 +96,15 @@ const FrameItPhotoGallery = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMounted]);
 
   // Responsive slides calculation
   useEffect(() => {
+    if (!isMounted) return;
+
     const updateSlidesToShow = () => {
+      if (typeof window === 'undefined') return;
+      
       if (window.innerWidth < 640) {
         setSlidesToShow(1);
       } else if (window.innerWidth < 768) {
@@ -110,11 +122,11 @@ const FrameItPhotoGallery = () => {
     const handleResize = () => updateSlidesToShow();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isMounted]);
 
   // Auto-advance slides only when visible
   useEffect(() => {
-    if (!isAutoPlaying || !isVisible) return;
+    if (!isAutoPlaying || !isVisible || !isMounted) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
@@ -124,7 +136,7 @@ const FrameItPhotoGallery = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slidesToShow, isVisible]);
+  }, [isAutoPlaying, slidesToShow, isVisible, isMounted]);
 
   const nextSlide = () => {
     const maxIndex = galleryPhotos.length - slidesToShow;
@@ -153,6 +165,29 @@ const FrameItPhotoGallery = () => {
   };
 
   const maxDots = Math.ceil(galleryPhotos.length - slidesToShow + 1);
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-900 mb-4">
+                Photo Gallery
+              </h2>
+              <p className="text-lg text-charcoal-800/70 max-w-2xl mx-auto">
+                Discover the beauty of your memories transformed into stunning
+                framed art. Each piece is carefully crafted to bring your photos
+                to life.
+              </p>
+            </div>
+            <div className="animate-pulse h-96 bg-gray-200 rounded-lg"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={sectionRef} className="py-20 bg-white overflow-hidden">
@@ -287,7 +322,11 @@ const FrameItPhotoGallery = () => {
               </p>
               <Button
                 className=" text-white font-semibold px-8 py-3 rounded-xl"
-                onClick={() => (window.location.href = "/contact")}
+                onClick={() => {
+                  if (isMounted && typeof window !== 'undefined') {
+                    window.location.href = "/contact";
+                  }
+                }}
               >
                 Start Your Order
               </Button>

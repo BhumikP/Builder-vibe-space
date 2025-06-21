@@ -62,10 +62,18 @@ const FrameItTestimonialsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Prevent hydration mismatch by ensuring component is mounted
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Intersection Observer for performance
   useEffect(() => {
+    if (!isMounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -81,18 +89,18 @@ const FrameItTestimonialsSlider = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMounted]);
 
   // Auto-advance slides only when visible
   useEffect(() => {
-    if (!isAutoPlaying || !isVisible) return;
+    if (!isAutoPlaying || !isVisible || !isMounted) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isVisible]);
+  }, [isAutoPlaying, isVisible, isMounted]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -110,6 +118,28 @@ const FrameItTestimonialsSlider = () => {
     setCurrentIndex(index);
     setIsAutoPlaying(false);
   };
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <section className="py-20 bg-dark-green text-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                What Our Customers Say
+              </h2>
+              <p className="text-lg text-white max-w-2xl mx-auto">
+                Don&apos;t just take our word for it. Here&apos;s what real customers say
+                about their FrameIt experience.
+              </p>
+            </div>
+            <div className="animate-pulse h-96 bg-green-800 rounded-lg"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={sectionRef} className="py-20 bg-dark-green text-white overflow-hidden">
