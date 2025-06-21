@@ -91,16 +91,16 @@ const FrameItTestimonialsSlider = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-wood-100 to-cream-200 overflow-hidden">
+    <section className="py-20 bg-dark-green text-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  mb-4">
               What Our Customers Say
             </h2>
-            <p className="text-lg text-charcoal-800/70 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what real customers say
+            <p className="text-lg text-white max-w-2xl mx-auto">
+              Don&apos;t just take our word for it. Here&apos;s what real customers say
               about their FrameIt experience.
             </p>
           </div>
@@ -123,15 +123,15 @@ const FrameItTestimonialsSlider = () => {
                               {[...Array(testimonial.rating)].map((_, i) => (
                                 <Star
                                   key={i}
-                                  className="w-5 h-5 fill-gold-500 text-gold-500"
+                                  className="w-5 h-5 fill-primary"
                                 />
                               ))}
                             </div>
 
-                            <Quote className="w-8 h-8 text-gold-500/30 mb-4" />
+                            <Quote className="w-8 h-8 text-primary mb-4" />
 
                             <blockquote className="text-lg md:text-xl text-charcoal-800 leading-relaxed mb-6">
-                              "{testimonial.text}"
+                              &ldquo;{testimonial.text}&rdquo;
                             </blockquote>
 
                             <div className="flex items-center gap-4">
@@ -156,7 +156,7 @@ const FrameItTestimonialsSlider = () => {
 
                           {/* Photo Type Badge */}
                           <div className="md:col-span-1 flex justify-center">
-                            <div className="bg-gradient-to-br from-gold-400 to-gold-600 text-white rounded-2xl p-6 text-center">
+                            <div className="bg-gowilds-primary-dark text-white rounded-2xl p-6 text-center">
                               <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
                                 <svg
                                   className="w-8 h-8 text-white"
@@ -211,8 +211,8 @@ const FrameItTestimonialsSlider = () => {
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-gold-500 scale-125"
-                    : "bg-charcoal-800/20 hover:bg-charcoal-800/40"
+                    ? "bg-gowilds-primary-dark scale-125"
+                    : "bg-gowilds-primary hover:bg-gowilds-primary-dark/40"
                 }`}
               />
             ))}
@@ -221,28 +221,28 @@ const FrameItTestimonialsSlider = () => {
           {/* Stats Section */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gold-600 mb-2">
+              <div className="text-3xl md:text-4xl font-bold  mb-2">
                 500+
               </div>
-              <div className="text-charcoal-800/70">Happy Customers</div>
+              <div className="">Happy Customers</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gold-600 mb-2">
+              <div className="text-3xl md:text-4xl font-bold  mb-2">
                 4.9/5
               </div>
-              <div className="text-charcoal-800/70">Average Rating</div>
+              <div className="">Average Rating</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gold-600 mb-2">
+              <div className="text-3xl md:text-4xl font-bold  mb-2">
                 1000+
               </div>
-              <div className="text-charcoal-800/70">Frames Created</div>
+              <div className="">Frames Created</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gold-600 mb-2">
+              <div className="text-3xl md:text-4xl font-bold  mb-2">
                 98%
               </div>
-              <div className="text-charcoal-800/70">Would Recommend</div>
+              <div className="">Would Recommend</div>
             </div>
           </div>
         </div>

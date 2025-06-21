@@ -29,17 +29,17 @@ const features = [
 
 const FrameItFeatures = () => {
   return (
-    <section className="py-20 bg-cream-200">
+    <section className="py-20  text-black" id="features">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  mb-4">
               Why Choose FrameIt?
             </h2>
-            <p className="text-lg text-charcoal-800/70 max-w-2xl mx-auto">
-              We're passionate about transforming your precious memories into
-              beautiful wall art that you'll treasure forever.
+            <p className="text-lg  max-w-2xl mx-auto">
+              We&apos;re passionate about transforming your precious memories into
+              beautiful wall art that you&apos;ll treasure forever.
             </p>
           </div>
 
@@ -48,13 +48,13 @@ const FrameItFeatures = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group bg-cream-50 rounded-2xl p-8 text-center hover:bg-white transition-all duration-300 hover:shadow-xl hover:scale-105"
+                className="group shadow-lg rounded-2xl p-8 text-center hover:bg-white transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 text-white rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8" />
                 </div>
 
-                <h3 className="text-xl font-bold text-charcoal-900 mb-4">
+                <h3 className="text-xl font-bold text-dark-green imary mb-4">
                   {feature.title}
                 </h3>
 
@@ -67,8 +67,8 @@ const FrameItFeatures = () => {
 
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <div className="inline-flex items-center gap-2 bg-gold-500/10 px-6 py-3 rounded-full">
-              <span className="text-gold-700 font-semibold">
+            <div className="inline-flex items-center gap-2 shadow-xl px-6 py-3 rounded-full">
+              <span className="text-dark-green font-semibold">
                 ✨ Join thousands of happy customers
               </span>
             </div>

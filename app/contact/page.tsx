@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import FrameItFooter from "@/components/FrameItFooter";
+import FrameItHeader from "@/components/FrameItHeader";
 
 export const metadata = {
   title: "Contact Us - FrameIt",
@@ -12,16 +13,17 @@ export const metadata = {
 const ContactPage = () => {
   return (
     <div className="min-h-screen">
+         <FrameItHeader hideMenu={true}/>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200">
+      <section className="py-20 bg-dark-green text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal-900 mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold  mb-6">
               Get in Touch
             </h1>
-            <p className="text-lg md:text-xl text-charcoal-800/80 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
               Have questions about our framing services? Need help with your
-              order? We're here to help you create the perfect framed memories.
+              order? We&apos;re here to help you create the perfect framed memories.
             </p>
           </div>
         </div>
@@ -115,21 +117,21 @@ const ContactPage = () => {
                     />
                   </div>
 
-                  <Button className="w-full bg-gold-500 hover:bg-gold-600 text-white font-semibold py-3 text-lg">
+                  <Button className="w-full  text-white font-semibold py-3 text-lg">
                     Send Message
                   </Button>
                 </form>
               </div>
 
               {/* Contact Information */}
-              <div className="bg-cream-50 rounded-2xl p-8">
+              <div className="bg-white shadow-lg border  rounded-2xl p-8">
                 <h2 className="text-3xl font-bold text-charcoal-900 mb-8">
                   Contact Information
                 </h2>
 
                 <div className="space-y-8">
                   <div className="flex items-start gap-4">
-                    <div className="bg-gold-500 p-3 rounded-lg">
+                    <div className="bg-primary p-3 rounded-lg">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -144,7 +146,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-gold-500 p-3 rounded-lg">
+                    <div className="bg-primary p-3 rounded-lg">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -157,7 +159,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-gold-500 p-3 rounded-lg">
+                    <div className="bg-primary p-3 rounded-lg">
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -172,7 +174,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-gold-500 p-3 rounded-lg">
+                    <div className="bg-primary p-3 rounded-lg">
                       <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -190,7 +192,7 @@ const ContactPage = () => {
                 </div>
 
                 {/* Quick Links */}
-                <div className="mt-12 pt-8 border-t border-cream-300">
+                {/* <div className="mt-12 pt-8 border-t border-cream-300">
                   <h3 className="font-semibold text-charcoal-900 mb-4">
                     Quick Help
                   </h3>
@@ -220,7 +222,7 @@ const ContactPage = () => {
                       Frame Selection Guide
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -228,7 +230,7 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-cream-100">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal-900 mb-8">
@@ -236,7 +238,7 @@ const ContactPage = () => {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8 text-left">
-              <div className="bg-white rounded-xl p-6">
+              <div className="bg-white rounded-xl shadow-xl hover:shadow-2xl border p-6">
                 <h3 className="font-semibold text-charcoal-900 mb-3">
                   How quickly do you respond?
                 </h3>
@@ -246,17 +248,17 @@ const ContactPage = () => {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6">
+              <div className="bg-white rounded-xl shadow-xl hover:shadow-2xl border p-6">
                 <h3 className="font-semibold text-charcoal-900 mb-3">
                   Can I track my order?
                 </h3>
                 <p className="text-charcoal-800/70">
-                  Yes! Once your order ships, you'll receive a tracking number
-                  via email to monitor your frame's journey to your door.
+                  Yes! Once your order ships, you&apos;ll receive a tracking number
+                  via email to monitor your frame&apos;s journey to your door.
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6">
+              <div className="bg-white rounded-xl shadow-xl hover:shadow-2xl border p-6">
                 <h3 className="font-semibold text-charcoal-900 mb-3">
                   Do you offer custom sizes?
                 </h3>
@@ -266,13 +268,13 @@ const ContactPage = () => {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6">
+              <div className="bg-white rounded-xl shadow-xl hover:shadow-2xl border p-6">
                 <h3 className="font-semibold text-charcoal-900 mb-3">
                   What if I need help choosing?
                 </h3>
                 <p className="text-charcoal-800/70">
                   Our frame experts are happy to help! Send us your photo and
-                  room details, and we'll recommend the perfect frame style.
+                  room details, and we&apos;ll recommend the perfect frame style.
                 </p>
               </div>
             </div>

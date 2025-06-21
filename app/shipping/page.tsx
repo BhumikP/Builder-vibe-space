@@ -1,6 +1,7 @@
 import FrameItFooter from "@/components/FrameItFooter";
 import Link from "next/link";
 import { ArrowLeft, Truck, Clock, Shield, MapPin } from "lucide-react";
+import FrameItHeader from "@/components/FrameItHeader";
 
 export const metadata = {
   title: "Shipping Information - FrameIt",
@@ -12,43 +13,7 @@ const ShippingPage = () => {
   return (
     <div className="min-h-screen">
       {/* Navigation Header */}
-      <header className="bg-white border-b border-cream-300 py-4">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto flex items-center justify-between">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-charcoal-800 hover:text-gold-600 transition-colors duration-300"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Back to Home
-            </Link>
-
-            <div className="flex items-center gap-8">
-              <Link href="/" className="text-2xl font-bold text-gold-500">
-                FrameIt
-              </Link>
-
-              <nav className="hidden md:flex items-center gap-6">
-                <Link
-                  href="/contact"
-                  className="text-charcoal-800 hover:text-gold-600 transition-colors duration-300"
-                >
-                  Contact
-                </Link>
-                <Link
-                  href="/installation"
-                  className="text-charcoal-800 hover:text-gold-600 transition-colors duration-300"
-                >
-                  Installation Guide
-                </Link>
-                <Link href="/shipping" className="text-gold-600 font-semibold">
-                  Shipping
-                </Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
+   <FrameItHeader hideMenu />
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200">
@@ -145,7 +110,7 @@ const ShippingPage = () => {
                 Our Shipping Process
               </h2>
               <p className="text-lg text-charcoal-800/70">
-                From order to doorstep, here's how we ensure your frames arrive
+                From order to doorstep, here&apos;s how we ensure your frames arrive
                 perfectly.
               </p>
             </div>
@@ -283,7 +248,7 @@ const ShippingPage = () => {
       </section>
 
       {/* Shipping Zones */}
-      <section className="py-20 bg-cream-100">
+      {/* <section className="py-20 bg-cream-100">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -367,7 +332,7 @@ const ShippingPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <FrameItFooter />
     </div>

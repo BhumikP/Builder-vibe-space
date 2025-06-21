@@ -24,6 +24,7 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        'dark-green':"hsl(var(--dark-green))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -61,6 +62,12 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        gowilds: {
+          primary: "#63ab45",
+          "primary-dark": "#4a8233",
+          dark: "#2a2a2a",
+          "dark-lighter": "#3a3a3a",
         },
         // FrameIt brand colors
         cream: {
@@ -112,6 +119,9 @@ export default {
             height: "0",
           },
         },
+      },
+      boxShadow: {
+        'custom-lg': '0px 10px 60px rgba(0, 0, 0, 0.07)',
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

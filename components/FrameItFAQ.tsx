@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "What if I'm not happy with my frame?",
     answer:
-      "We offer a 100% satisfaction guarantee. If you're not completely happy with your frame, contact us within 30 days and we'll remake it free of charge or provide a full refund. Your happiness is our top priority.",
+      "We offer a 100% satisfaction guarantee. If you're not completely happy with your frame, contact us within 7 daysand we'll remake it free of charge or provide a full refund. Your happiness is our top priority.",
   },
   {
     question: "Are these frames easy to hang?",
@@ -40,7 +40,7 @@ const faqs = [
 
 const FrameItFAQ = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="faq">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -55,15 +55,15 @@ const FrameItFAQ = () => {
           </div>
 
           {/* FAQ Accordion */}
-          <div className="bg-cream-50 rounded-2xl p-8">
+          <div className="rounded-2xl p-8">
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-white rounded-xl border border-cream-300/50 px-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="bg-white rounded-xl border border-dark-green/50 px-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
-                  <AccordionTrigger className="text-left font-semibold text-charcoal-900 hover:text-gold-600 transition-colors duration-300 py-6">
+                  <AccordionTrigger className="text-left font-semibold text-dark-green hover:text-green-800 transition-colors duration-300 py-6">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-charcoal-800/80 leading-relaxed pb-6">
@@ -75,7 +75,7 @@ const FrameItFAQ = () => {
           </div>
 
           {/* Still have questions CTA */}
-          <div className="text-center mt-12 bg-gradient-to-r from-gold-500/10 to-wood-500/10 rounded-2xl p-8 border border-gold-500/20">
+          {/* <div className="text-center mt-12 bg-gradient-to-r from-gold-500/10 to-wood-500/10 rounded-2xl p-8 border border-gold-500/20">
             <h3 className="text-xl font-bold text-charcoal-900 mb-4">
               Still Have Questions?
             </h3>
@@ -97,7 +97,7 @@ const FrameItFAQ = () => {
                 Call Us
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

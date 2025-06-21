@@ -150,7 +150,7 @@ const FrameItPhotoGallery = () => {
 
           {/* Photo Gallery Slider */}
           <div className="relative">
-            <div className="overflow-hidden rounded-2xl">
+            <div className=" rounded-2xl">
               <div
                 className="flex transition-transform duration-700 ease-in-out gap-6"
                 style={{
@@ -248,7 +248,7 @@ const FrameItPhotoGallery = () => {
 
           {/* Call to Action */}
           <div className="text-center mt-16">
-            <div className="bg-gradient-to-r from-gold-500/10 to-wood-500/10 rounded-2xl p-8 border border-gold-500/20 max-w-2xl mx-auto">
+            <div className="shadow-custom-lg  rounded-2xl p-8 border border-green-500/20 max-w-2xl mx-auto">
               <h3 className="text-2xl font-bold text-charcoal-900 mb-4">
                 Ready to Frame Your Photos?
               </h3>
@@ -258,7 +258,7 @@ const FrameItPhotoGallery = () => {
                 care.
               </p>
               <Button
-                className="bg-gold-500 hover:bg-gold-600 text-white font-semibold px-8 py-3 rounded-xl"
+                className=" text-white font-semibold px-8 py-3 rounded-xl"
                 onClick={() => (window.location.href = "/contact")}
               >
                 Start Your Order

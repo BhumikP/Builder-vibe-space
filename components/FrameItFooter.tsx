@@ -4,8 +4,8 @@ import { Input } from "@/components/ui/input";
 
 const footerLinks = {
   company: [
-    { name: "About Us", href: "/about" },
-    { name: "Our Story", href: "/story" },
+    // { name: "About Us", href: "/about" },
+    // { name: "Our Story", href: "/story" },
     { name: "Installation Guide", href: "/installation" },
   ],
   support: [
@@ -29,7 +29,7 @@ const socialLinks = [
 
 const FrameItFooter = () => {
   return (
-    <footer className="bg-charcoal-900 text-cream-50">
+    <footer className="bg-dark-green text-cream-50">
       {/* Main footer content */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
@@ -37,7 +37,7 @@ const FrameItFooter = () => {
             {/* Brand section */}
             <div className="lg:col-span-4">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gold-500 mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-4">
                   FrameIt
                 </h3>
                 <p className="text-cream-50/80 leading-relaxed mb-6">
@@ -48,18 +48,18 @@ const FrameItFooter = () => {
               </div>
 
               {/* Newsletter signup */}
-              <div className="bg-charcoal-800 rounded-xl p-6">
+              <div className="bg-white/80 text-black shadow-lg rounded-xl p-6">
                 <h4 className="font-semibold mb-3">Stay Updated</h4>
-                <p className="text-sm text-cream-50/70 mb-4">
+                <p className="text-sm  mb-4">
                   Get framing tips, design inspiration, and exclusive offers.
                 </p>
                 <div className="flex gap-2">
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="bg-white/10 border-white/20 text-cream-50 placeholder:text-cream-50/50 focus:border-gold-500"
+                    className="bg-white/10 border-black/20 text-black placeholder:text-black/50 "
                   />
-                  <Button className="bg-gold-500 hover:bg-gold-600 text-white px-6">
+                  <Button className=" text-white px-6">
                     Subscribe
                   </Button>
                 </div>
@@ -77,7 +77,7 @@ const FrameItFooter = () => {
                       <li key={link.name}>
                         <a
                           href={link.href}
-                          className="text-cream-50/70 hover:text-gold-500 transition-colors duration-300"
+                          className="text-cream-50/70 hover:text-primarytransition-colors duration-300"
                         >
                           {link.name}
                         </a>
@@ -94,7 +94,7 @@ const FrameItFooter = () => {
                       <li key={link.name}>
                         <a
                           href={link.href}
-                          className="text-cream-50/70 hover:text-gold-500 transition-colors duration-300"
+                          className="text-cream-50/70 hover:text-primary transition-colors duration-300"
                         >
                           {link.name}
                         </a>
@@ -111,7 +111,7 @@ const FrameItFooter = () => {
                       <li key={link.name}>
                         <a
                           href={link.href}
-                          className="text-cream-50/70 hover:text-gold-500 transition-colors duration-300"
+                          className="text-cream-50/70 hover:text-primary transition-colors duration-300"
                         >
                           {link.name}
                         </a>
@@ -122,10 +122,10 @@ const FrameItFooter = () => {
                   {/* Contact info */}
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-gold-500" />
+                      <Mail className="w-4 h-4 text-primary" />
                       <a
                         href="mailto:hello@frameit.com"
-                        className="text-cream-50/70 hover:text-gold-500 transition-colors duration-300"
+                        className="text-cream-50/70 hover:text-primary transition-colors duration-300"
                       >
                         hello@frameit.com
                       </a>
@@ -145,7 +145,7 @@ const FrameItFooter = () => {
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-cream-50/60 text-sm">
-              © 2024 FrameIt. All rights reserved. Made with ❤️ for your
+              © 2025 FrameIt. All rights reserved. Made with ❤️ for your
               memories.
             </p>
 
@@ -166,6 +166,7 @@ const FrameItFooter = () => {
           </div>
         </div>
       </div>
+      
     </footer>
   );
 };

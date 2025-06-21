@@ -78,9 +78,9 @@ const FrameItInstallation = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-900 mb-4">
+            {/* <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-900 mb-4">
               Installation & Care Guide
-            </h2>
+            </h2> */}
             <p className="text-lg text-charcoal-800/70 max-w-2xl mx-auto">
               Follow these simple steps to perfectly install your FrameIt frames
               and keep them looking beautiful for years to come.
@@ -103,7 +103,7 @@ const FrameItInstallation = () => {
               {installationSteps.map((step, index) => (
                 <div
                   key={index}
-                  className="group bg-cream-50 rounded-2xl p-8 hover:bg-white transition-all duration-300 hover:shadow-xl"
+                  className="group bg-white rounded-2xl p-8 hover:bg-white/50 shadow-2xl transition-all duration-300 hover:shadow-xl"
                 >
                   {/* Step Image */}
                   <div className="relative mb-6 overflow-hidden rounded-xl">
@@ -117,13 +117,13 @@ const FrameItInstallation = () => {
                       />
 
                       {/* Step Number Overlay */}
-                      <div className="absolute top-4 left-4 bg-gold-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                      <div className="absolute top-4 left-4 bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
                         {step.step}
                       </div>
 
                       {/* Icon Overlay */}
                       <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-3">
-                        <step.icon className="w-6 h-6 text-gold-600" />
+                        <step.icon className="w-6 h-6 text-primary" />
                       </div>
                     </div>
                   </div>
@@ -140,7 +140,7 @@ const FrameItInstallation = () => {
                     {/* Pro Tip */}
                     <div className="bg-gold-50 border border-gold-200 rounded-lg p-3">
                       <div className="flex items-start gap-2">
-                        <span className="text-gold-600 font-semibold text-sm">
+                        <span className="text-primary font-semibold text-sm">
                           💡 Pro Tip:
                         </span>
                         <span className="text-gold-800 text-sm">
@@ -154,15 +154,15 @@ const FrameItInstallation = () => {
             </div>
 
             {/* Installation Video CTA */}
-            <div className="text-center mt-12 bg-gradient-to-r from-gold-500/10 to-wood-500/10 rounded-2xl p-8 border border-gold-500/20">
-              <h3 className="text-xl font-bold text-charcoal-900 mb-4">
+            <div className="text-center mt-12 bg-dark-green text-white rounded-2xl p-8 border border-gold-500/20">
+              <h3 className="text-xl font-bold  mb-4">
                 Need Visual Guidance?
               </h3>
-              <p className="text-charcoal-800/70 mb-6">
+              <p className="text-white/70 mb-6">
                 Watch our step-by-step installation video for a complete
                 walkthrough of the process.
               </p>
-              <button className="bg-gold-500 hover:bg-gold-600 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-300 inline-flex items-center gap-2">
+              <button className=" text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-300 inline-flex items-center gap-2">
                 <svg
                   className="w-5 h-5"
                   fill="currentColor"
@@ -190,7 +190,7 @@ const FrameItInstallation = () => {
               {careInstructions.map((instruction, index) => (
                 <div
                   key={index}
-                  className="bg-cream-50 rounded-xl p-6 text-center hover:bg-white transition-all duration-300 hover:shadow-lg group"
+                  className="bg-white shadow-lg rounded-xl p-6 text-center hover:bg-white/60 hover:shadow-xl transition-all duration-300 group"
                 >
                   <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                     {instruction.icon}
@@ -215,7 +215,7 @@ const FrameItInstallation = () => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="inline-flex items-center gap-2 bg-gold-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <div className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
                     <CheckCircle className="w-4 h-4" />
                     Premium Materials
                   </div>
@@ -226,7 +226,7 @@ const FrameItInstallation = () => {
                   </p>
                   <a
                     href="/contact"
-                    className="text-gold-400 hover:text-gold-300 transition-colors duration-300 font-semibold"
+                    className="text-primary transition-colors duration-300 font-semibold"
                   >
                     Get Help →
                   </a>

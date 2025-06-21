@@ -72,15 +72,15 @@ const FrameItShowcase = () => {
   };
 
   return (
-    <section id="showcase" className="py-20 bg-white">
+    <section id="work" className="py-20 bg-dark-green text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Our Work in Action
             </h2>
-            <p className="text-lg text-charcoal-800/70 max-w-2xl mx-auto">
+            <p className="text-lg  max-w-2xl mx-auto">
               See how our premium frames transform homes and create stunning
               focal points that bring joy every day.
             </p>
@@ -102,8 +102,8 @@ const FrameItShowcase = () => {
                     onMouseEnter={() => setHoveredItem(item.id)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
-                    <div className="relative bg-wood-500 p-4 rounded-xl shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
-                      <div className="bg-cream-50 p-3 rounded-lg">
+                    <div className="relative bg-white text-black p-4 rounded-xl shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
+                      <div className="shadow-lg p-3 rounded-lg">
                         <div className="relative aspect-[4/3] overflow-hidden rounded">
                           <Image
                             src={item.image}
@@ -126,13 +126,13 @@ const FrameItShowcase = () => {
 
                       {/* Content */}
                       <div className="p-4 text-center">
-                        <h3 className="text-lg font-bold text-charcoal-900 mb-2">
+                        <h3 className="text-lg font-bold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-charcoal-800/70 mb-2">
+                        <p className="text-sm  mb-2">
                           {item.description}
                         </p>
-                        <span className="inline-block bg-gold-500/10 text-gold-700 px-3 py-1 rounded-full text-xs font-medium">
+                        <span className="inline-block bg-dark-green text-white px-3 py-1 rounded-full text-xs font-medium">
                           {item.frameColor}
                         </span>
                       </div>
@@ -147,7 +147,7 @@ const FrameItShowcase = () => {
               variant="outline"
               size="icon"
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-20"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 text-primary backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-20"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -156,7 +156,7 @@ const FrameItShowcase = () => {
               variant="outline"
               size="icon"
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-20"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 text-primary backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-20"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
@@ -169,8 +169,8 @@ const FrameItShowcase = () => {
                   onClick={() => setCurrentSlide(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide
-                      ? "bg-gold-500 scale-125"
-                      : "bg-charcoal-800/20 hover:bg-charcoal-800/40"
+                      ? "bg-primary scale-125"
+                      : "bg-green-600 hover:bg-primary"
                   }`}
                 />
               ))}
@@ -178,11 +178,11 @@ const FrameItShowcase = () => {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
-            <Button className="bg-gold-500 hover:bg-gold-600 text-white font-semibold px-8 py-3 rounded-xl">
+          {/* <div className="text-center mt-12">
+            <Button className=" text-white font-semibold px-8 py-3 rounded-xl">
               View Full Gallery
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

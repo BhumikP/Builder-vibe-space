@@ -1,10 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import FrameItChat from "./FrameItChat";
+import { useState } from "react";
 
 const FrameItHero = () => {
+  const [showChat, setShowChat] = useState(false);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-dark-green text-white overflow-hidden">
       {/* Background decorative elements */}
       <div
         className={
@@ -18,12 +22,12 @@ const FrameItHero = () => {
             {/* Content */}
             <div className="text-center lg:text-left space-y-8">
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal-900 leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Transform Your
-                  <span className="text-gold-500 block">Memories</span>
+                  <span className="text-primary block">Memories</span>
                   Into Stunning Wall Art
                 </h1>
-                <p className="text-lg md:text-xl text-charcoal-800/80 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-lg md:text-xl  max-w-lg mx-auto lg:mx-0 leading-relaxed">
                   Upload your favorite photos and get them delivered as
                   beautifully framed art. Premium quality, handcrafted frames
                   that turn your memories into masterpieces.
@@ -33,7 +37,7 @@ const FrameItHero = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button
                   size="lg"
-                  className="bg-gold-500 hover:bg-gold-600 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className=" text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   onClick={() => (window.location.href = "/contact")}
                 >
                   Start Framing
@@ -41,7 +45,7 @@ const FrameItHero = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-charcoal-800 text-charcoal-800 hover:bg-charcoal-800 hover:text-cream-50 font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                  className="border-2 border-green-800 text-black hover:bg-green-800 hover:text-cream-50 font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300"
                   onClick={() =>
                     document
                       .querySelector("#showcase")
@@ -59,13 +63,13 @@ const FrameItHero = () => {
                     {[...Array(5)].map((_, i) => (
                       <div
                         key={i}
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 border-2 border-cream-50 flex items-center justify-center"
+                        className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-cream-50 flex items-center justify-center"
                       >
                         <span className="text-xs text-white">★</span>
                       </div>
                     ))}
                   </div>
-                  <span className="text-sm text-charcoal-800/70 font-medium">
+                  <span className="text-sm  font-medium">
                     500+ Happy Customers
                   </span>
                 </div>
@@ -135,18 +139,45 @@ const FrameItHero = () => {
             </div>
           </div>
         </div>
+        <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowChat(true)}
+                className="relative flex ml-auto right-3 bottom-0"
+              >
+                <svg
+                  className="h-10 w-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+                <span className="sr-only">Open chat</span>
+                {/* Chat notification dot */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse" />
+              </Button>
       </div>
+     
 
       {/* Bottom wave separator */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg
-          className="w-full h-20 text-cream-200"
+          className="w-full h-20 text-green-800/30"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
         >
           <path d="M1200 120L0 16.48V120z" fill="currentColor"></path>
         </svg>
       </div>
+      
+      {showChat && <FrameItChat onClose={() => setShowChat(false)} />}
+
     </section>
   );
 };

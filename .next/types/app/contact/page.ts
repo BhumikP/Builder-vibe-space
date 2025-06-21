@@ -1,4 +1,4 @@
-// File: /app/code/app/contact/page.tsx
+// File: /Users/bhumikprajapati/Documents/Learning/Builder-vibe-space/app/contact/page.tsx
 import * as entry from '../../../../app/contact/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

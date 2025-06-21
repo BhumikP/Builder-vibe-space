@@ -25,7 +25,7 @@ const InstallationPage = () => {
             </Link>
 
             <div className="flex items-center gap-8">
-              <Link href="/" className="text-2xl font-bold text-gold-500">
+              <Link href="/" className="text-2xl font-bold text-primary">
                 FrameIt
               </Link>
 
@@ -38,7 +38,7 @@ const InstallationPage = () => {
                 </Link>
                 <Link
                   href="/installation"
-                  className="text-gold-600 font-semibold"
+                  className="text-dark-green font-semibold"
                 >
                   Installation Guide
                 </Link>
@@ -49,13 +49,13 @@ const InstallationPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200">
+      <section className="py-16 bg-dark-green text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal-900 mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold  mb-6">
               Installation & Care Guide
             </h1>
-            <p className="text-lg md:text-xl text-charcoal-800/80 max-w-2xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8">
               Everything you need to know to perfectly install your FrameIt
               frames and keep them looking beautiful for years to come.
             </p>
@@ -64,13 +64,13 @@ const InstallationPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#installation"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gold-500 text-white font-semibold rounded-xl hover:bg-gold-600 transition-colors duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 bg-primary  font-semibold rounded-xl text-white transition-colors duration-300"
               >
                 Installation Steps
               </a>
               <a
                 href="#care"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white text-charcoal-800 font-semibold rounded-xl border border-charcoal-800/20 hover:bg-charcoal-800 hover:text-white transition-colors duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-charcoal-800 hover:bg-green-800 hover:text-cream-50  font-semibold rounded-xl border border-charcoal-800/20  transition-colors duration-300"
               >
                 Care Instructions
               </a>
@@ -83,21 +83,21 @@ const InstallationPage = () => {
       <FrameItInstallation />
 
       {/* Additional Resources */}
-      <section className="py-20 bg-cream-100">
+      <section className="py-20 bg-white text-dark-green">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-charcoal-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold  mb-4">
                 Need More Help?
               </h2>
-              <p className="text-lg text-charcoal-800/70">
-                We're here to support you every step of the way.
+              <p className="text-lg ">
+                We&apos;re here to support you every step of the way.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-6 text-center">
-                <div className="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white shadow-xl hover:shadow-2xl rounded-xl p-6 text-center">
+                <div className="w-16 h-16 bg-dark-green rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -112,7 +112,7 @@ const InstallationPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-bold text-charcoal-900 mb-3">
+                <h3 className="font-bold  mb-3">
                   Live Chat Support
                 </h3>
                 <p className="text-charcoal-800/70 mb-4">
@@ -120,14 +120,14 @@ const InstallationPage = () => {
                 </p>
                 <a
                   href="/contact"
-                  className="text-gold-600 hover:text-gold-700 font-semibold"
+                  className="text-primary font-semibold"
                 >
                   Start Chat →
                 </a>
               </div>
 
-              <div className="bg-white rounded-xl p-6 text-center">
-                <div className="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white shadow-xl hover:shadow-2xl rounded-xl p-6 text-center">
+                <div className="w-16 h-16 bg-dark-green rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -142,7 +142,7 @@ const InstallationPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-bold text-charcoal-900 mb-3">
+                <h3 className="font-bold  mb-3">
                   Video Tutorials
                 </h3>
                 <p className="text-charcoal-800/70 mb-4">
@@ -150,14 +150,14 @@ const InstallationPage = () => {
                 </p>
                 <a
                   href="#"
-                  className="text-gold-600 hover:text-gold-700 font-semibold"
+                  className="text-primary font-semibold"
                 >
                   Watch Now →
                 </a>
               </div>
 
-              <div className="bg-white rounded-xl p-6 text-center">
-                <div className="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white shadow-xl hover:shadow-2xl rounded-xl p-6 text-center">
+                <div className="w-16 h-16 bg-dark-green rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -172,13 +172,13 @@ const InstallationPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-bold text-charcoal-900 mb-3">PDF Guide</h3>
+                <h3 className="font-bold  mb-3">PDF Guide</h3>
                 <p className="text-charcoal-800/70 mb-4">
                   Download our complete installation manual
                 </p>
                 <a
                   href="#"
-                  className="text-gold-600 hover:text-gold-700 font-semibold"
+                  className="text-primary font-semibold"
                 >
                   Download →
                 </a>
