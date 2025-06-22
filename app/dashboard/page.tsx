@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react';
-import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import PhotoUpload from '@/components/PhotoUpload';
 import FramePreview from '@/components/FramePreview';

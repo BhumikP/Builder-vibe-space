@@ -1,15 +1,27 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Prompt } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const inter = Inter({ 
+const prompt = Prompt({
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900"
+  ],
   subsets: ["latin"],
   display: 'swap',
   preload: true,
   fallback: ['system-ui', 'arial'],
+  variable: '--font-prompt',
 });
 
 export const metadata: Metadata = {
@@ -79,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={prompt.variable}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -111,7 +123,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className="font-sans" suppressHydrationWarning={true}>
         <TooltipProvider>
           {children}
           <Toaster />

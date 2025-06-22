@@ -41,8 +41,8 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onImageSelect }) => {
         <div
           className={`relative bg-white rounded-3xl shadow-xl border-2 border-dashed transition-all duration-300 p-12 text-center cursor-pointer group ${
             isDragOver 
-              ? 'border-pink-400 bg-pink-50 scale-105' 
-              : 'border-gray-300 hover:border-pink-400 hover:bg-pink-50 hover:scale-105'
+              ? 'border-green-400 bg-green-50 scale-105' 
+              : 'border-gray-300 hover:border-green-400 hover:bg-green-50 hover:scale-105'
           }`}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
@@ -61,18 +61,18 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onImageSelect }) => {
             {/* Animated Icon */}
             <div className="flex justify-center">
               <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
-                isDragOver ? 'bg-pink-200 scale-110' : 'bg-pink-100 group-hover:bg-pink-200 group-hover:scale-110'
+                isDragOver ? 'bg-green-200 scale-110' : 'bg-green-100 group-hover:bg-green-200 group-hover:scale-110'
               }`}>
                 <div className="relative">
-                  <Camera size={32} className="text-pink-500 transition-transform duration-300 group-hover:scale-110" />
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-pink-500 rounded-full animate-ping" />
+                  <Camera size={32} className="text-green-500 transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping" />
                 </div>
               </div>
             </div>
             
             {/* Content */}
             <div className="space-y-3">
-              <h3 className="text-2xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-pink-600">
+              <h3 className="text-2xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-green-600">
                 Upload Your Photo
               </h3>
               <p className="text-gray-600 text-lg">
@@ -84,9 +84,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onImageSelect }) => {
             </div>
             
             {/* Upload Button */}
-            <div className="flex items-center justify-center space-x-3 text-pink-500 font-semibold">
+            <div className="flex items-center justify-center space-x-3 text-green-500 font-semibold">
               <Upload size={20} className="transition-transform duration-300 group-hover:scale-110" />
-              <span className="transition-colors duration-300 group-hover:text-pink-600">Choose Photo</span>
+              <span className="transition-colors duration-300 group-hover:text-green-600">Choose Photo</span>
             </div>
 
             {/* Sample Images */}
@@ -110,7 +110,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onImageSelect }) => {
                           onImageSelect(file);
                         });
                     }}
-                    className="w-12 h-12 rounded-lg overflow-hidden border-2 border-gray-200 hover:border-pink-400 transition-all duration-200 transform hover:scale-110"
+                    className="w-12 h-12 rounded-lg overflow-hidden border-2 border-gray-200 hover:border-green-400 transition-all duration-200 transform hover:scale-110"
                   >
                     <img src={src} alt={`Sample ${index + 1}`} className="w-full h-full object-cover" />
                   </button>
@@ -121,15 +121,15 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onImageSelect }) => {
           
           {/* Animated Background */}
           <div className={`absolute inset-0 rounded-3xl transition-opacity duration-300 ${
-            isDragOver ? 'bg-pink-100 opacity-50' : 'bg-pink-50 opacity-0 group-hover:opacity-30'
+            isDragOver ? 'bg-green-100 opacity-50' : 'bg-green-50 opacity-0 group-hover:opacity-30'
           }`} />
           
           {/* Floating Elements */}
           <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-            <Image size={24} className="text-pink-400 animate-bounce" style={{ animationDelay: '0.5s' }} />
+            <Image size={24} className="text-green-400 animate-bounce" style={{ animationDelay: '0.5s' }} />
           </div>
           <div className="absolute bottom-4 left-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-            <Upload size={20} className="text-pink-400 animate-bounce" style={{ animationDelay: '1s' }} />
+            <Upload size={20} className="text-green-400 animate-bounce" style={{ animationDelay: '1s' }} />
           </div>
         </div>
       </div>

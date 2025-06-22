@@ -97,6 +97,9 @@ export default {
           900: "#1A1A1A",
         },
       },
+      fontFamily: {
+        sans: ["var(--font-prompt)"]
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
