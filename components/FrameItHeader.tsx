@@ -39,7 +39,9 @@ function FrameItHeader({hideMenu=false}) {
             FAQ
           </a>
         
-          <Button>Start Framing</Button>
+          <Link href="/dashboard">
+            <Button>Start Framing</Button>
+          </Link>
         </div>}
       </div>
     </div>
