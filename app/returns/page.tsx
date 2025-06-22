@@ -110,49 +110,49 @@ const ReturnsPage = () => {
             </div>
 
             <div className="grid md:grid-cols-4 gap-8 " >
-              <div className="text-center shadow-xl border border-green-900/30 p-2 rounded-xl ">
+              <div className="text-center shadow-xl border bg-white  text-black p-2 rounded-xl ">
                 <div className="bg-dark-green text-white rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center font-bold text-lg">
                   1
                 </div>
                 <h3 className="font-bold  mb-3">Contact Us</h3>
-                <p className="text-sm text-white/70">
+                <p className="text-sm ">
                   Email us at returns@frameit.com or call 1-555-FRAME-IT with
                   your order number
                 </p>
               </div>
 
-              <div className="text-center shadow-xl border border-green-900/30 p-2 rounded-xl">
+              <div className="text-center shadow-xl border bg-white  text-black p-2 rounded-xl">
                 <div className="bg-dark-green text-white rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center font-bold text-lg">
                   2
                 </div>
                 <h3 className="font-bold  mb-3">
                   Get Return Label
                 </h3>
-                <p className="text-sm text-white/70">
+                <p className="text-sm ">
                   We&apos;ll email you a prepaid return shipping label within 24
                   hours
                 </p>
               </div>
 
-              <div className="text-center shadow-xl border border-green-900/30 p-2 rounded-xl">
+              <div className="text-center shadow-xl border bg-white  text-black p-2 rounded-xl">
                 <div className="bg-dark-green text-white rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center font-bold text-lg">
                   3
                 </div>
                 <h3 className="font-bold  mb-3">
                   Pack & Ship
                 </h3>
-                <p className="text-sm text-white/70">
+                <p className="text-sm ">
                   Carefully package your frame and drop it off at any carrier
                   location
                 </p>
               </div>
 
-              <div className="text-center shadow-xl border border-green-900/30 p-2 rounded-xl">
+              <div className="text-center shadow-xl border bg-white  text-black p-2 rounded-xl">
                 <div className="bg-dark-green text-white rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center font-bold text-lg">
                   4
                 </div>
                 <h3 className="font-bold  mb-3">Get Refund</h3>
-                <p className="text-sm text-white/70">
+                <p className="text-sm ">
                   Receive your refund or replacement within 5-7 business days of
                   our receipt
                 </p>

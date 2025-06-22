@@ -211,7 +211,7 @@ const FrameItPhotoGallery = () => {
               <div
                 className="flex transition-transform duration-700 ease-in-out gap-6"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / slidesToShow) + currentIndex * (24 / slidesToShow)}%)`,
+                  transform: `translateX(-${currentIndex * (100 / slidesToShow) + currentIndex * (1 / slidesToShow)}%)`,
                   width: `${(galleryPhotos.length / slidesToShow) * 100}%`,
                 }}
               >

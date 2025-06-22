@@ -113,7 +113,7 @@ const ContactPage = () => {
                       id="message"
                       rows={6}
                       placeholder="Tell us about your framing needs..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent resize-none"
+                      className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2  focus:border-transparent resize-none"
                     />
                   </div>
 

@@ -10,8 +10,8 @@ const footerLinks = {
   ],
   support: [
     { name: "Contact", href: "/contact" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Shipping", href: "/shipping" },
+    // { name: "FAQ", href: "#faq" },
+    // { name: "Shipping", href: "/shipping" },
     { name: "Returns", href: "/returns" },
   ],
   legal: [
